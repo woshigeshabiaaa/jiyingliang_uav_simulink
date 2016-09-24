@@ -1,0 +1,45 @@
+CC     = "E:\Program Files\MATLAB\R2012a\sys\lcc\bin\lcc.exe"
+LD     = "E:\Program Files\MATLAB\R2012a\sys\lcc\bin\lcclnk.exe"
+LIBCMD = "E:\Program Files\MATLAB\R2012a\sys\lcc\bin\lcclib.exe"
+CFLAGS = -c -Zp8 -DMATLAB_MEX_FILE -noregistrylookup
+LDFLAGS = -s -dll -L"E:\Program Files\MATLAB\R2012a\sys\lcc\lib"
+LIBFLAGS = 
+
+OBJECTS = \
+	"UAV_sfun.obj"\
+	"UAV_sfun_registry.obj"\
+	"c1_UAV.obj"\
+	"c2_UAV.obj"\
+	"c3_UAV.obj"\
+	"c4_UAV.obj"\
+	"lccstub.obj"\
+	"E:\Program Files\MATLAB\R2012a\sys\lcc\mex\lccdef.def"\
+	"E:\Program Files\MATLAB\R2012a\stateflow\c\debugger\lib\win32\sfc_debuglcc.lib"\
+	"E:\Program Files\MATLAB\R2012a\stateflow\c\mex\lib\win32\sfc_mexlcc.lib"\
+	"E:\Program Files\MATLAB\R2012a\extern\lib\win32\lcc\libmex.lib"\
+	"E:\Program Files\MATLAB\R2012a\extern\lib\win32\lcc\libmx.lib"\
+	"E:\Program Files\MATLAB\R2012a\extern\lib\win32\lcc\libfixedpoint.lib"\
+	"E:\Program Files\MATLAB\R2012a\extern\lib\win32\lcc\libut.lib"\
+	"E:\Program Files\MATLAB\R2012a\extern\lib\win32\lcc\libmwmathutil.lib"\
+	"E:\Program Files\MATLAB\R2012a\extern\lib\win32\lcc\libemlrt.lib"\
+	"E:\Program Files\MATLAB\R2012a\extern\lib\win32\lcc\libmwblascompat32.lib"\
+
+INCLUDE_PATH= -I"E:\Program Files\MATLAB\R2012a\sys\lcc\include"  -I"E:\Program Files\MATLAB\R2012a\extern\include"  -I"E:\Program Files\MATLAB\R2012a\simulink\include"  -I"E:\Program Files\MATLAB\R2012a\stateflow\c\mex\include"  -I"E:\Program Files\MATLAB\R2012a\stateflow\c\debugger\include" 
+ 
+
+UAV_sfun.mexw32 : $(MAKEFILE) $(OBJECTS)
+	$(LD) $(LDFLAGS) -o UAV_sfun.mexw32 @UAV_sfun.lmko
+UAV_sfun.obj :	"UAV_sfun.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "UAV_sfun.c"
+UAV_sfun_registry.obj :	"UAV_sfun_registry.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "UAV_sfun_registry.c"
+c1_UAV.obj :	"c1_UAV.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c1_UAV.c"
+c2_UAV.obj :	"c2_UAV.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c2_UAV.c"
+c3_UAV.obj :	"c3_UAV.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c3_UAV.c"
+c4_UAV.obj :	"c4_UAV.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c4_UAV.c"
+lccstub.obj :	"E:\Program Files\MATLAB\R2012a\sys\lcc\mex\lccstub.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "E:\Program Files\MATLAB\R2012a\sys\lcc\mex\lccstub.c"
